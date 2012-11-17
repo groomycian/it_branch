@@ -1,4 +1,6 @@
 ItBranch::Application.routes.draw do
+  get "teachers/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
