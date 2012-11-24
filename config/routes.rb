@@ -1,6 +1,7 @@
 ItBranch::Application.routes.draw do
   
   resources :teachers
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -13,7 +14,10 @@ ItBranch::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
+  match '/signout', to: 'sessions#destroy', :via => :get
   match '/signup',  to: 'teachers#new'
+  match '/signin',  to: 'sessions#new'
+  
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -55,6 +59,7 @@ ItBranch::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
+  root :to => 'teachers#new'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
