@@ -6,7 +6,7 @@ module SessionsHelper
   end
 
   def signed_in?
-    !current_user.nil?
+    !current_teacher.nil?
   end
 
   def sign_out
