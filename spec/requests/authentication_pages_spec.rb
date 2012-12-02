@@ -1,4 +1,4 @@
-require 'spec_helper'
+﻿require 'spec_helper'
 
 describe "Authentication" do
   subject { page }
@@ -35,8 +35,8 @@ describe "Authentication" do
 
       it { should have_selector('title', text: user.name) }
       it { should have_link('Profile', href: teacher_path(teacher)) }
-      it { should have_link('Sign out', href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Выйти', href: signout_path) }
+      it { should_not have_link('Войти', href: signin_path) }
     end
   end
 

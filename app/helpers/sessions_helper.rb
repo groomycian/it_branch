@@ -6,11 +6,11 @@ module SessionsHelper
   end
 
   def signed_in?
-    !current_teacher.nil?
+    !self.current_teacher.nil?
   end
 
   def sign_out
-    self.current_teacher = nil
+    @current_teacher = nil
     cookies.delete(:remember_token)
   end
 
@@ -20,5 +20,18 @@ module SessionsHelper
 
   def current_teacher
     @current_teacher ||= Teacher.find_by_remember_token(cookies[:remember_token])
+  end
+
+  def current_teacher?(teacher)
+    teacher == current_teacher
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  def store_location
+    session[:return_to] = request.url
   end
 end

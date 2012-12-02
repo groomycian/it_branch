@@ -1,0 +1,8 @@
+<li>
+  <%= gravatar_for teacher %>
+  <%= link_to teacher.name, teacher %>
+  <% if current_teacher.admin? && !current_teacher?(teacher) %>
+    | <%= link_to "удалить", teacher, method: :delete,
+                                  data: { confirm: "Вы уверены?" } %>
+  <% end %>
+</li>
